@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 //Task 2: Variable Declaration and Data Types
 
 //Declare Variables:
@@ -68,3 +70,31 @@ echo addNumbers(5, 5);
 echo "<br/>";
 echo addNumbers(50, 50);
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Handling</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class="fw-bold text-center">Form Handling</h1>
+    <form method="POST" action="names.php" class="container">
+        <label>Name:</label>
+        <input type="text" name="name" class="form-control my-3" placeholder="Enter your name..." required>
+        <button class="btn btn-primary" type="submit">Enter</button>
+    </form>
+    <hr>
+    <ul>
+        <?php
+             if(isset($_SESSION["greetings"])){
+                foreach($_SESSION["greetings"] as $greeting){
+                    echo "<li>" . $greeting . "</li>";
+                }
+             }
+        ?>
+    </ul>
+</body>
+</html>
